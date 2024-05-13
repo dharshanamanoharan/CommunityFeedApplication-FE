@@ -66,6 +66,7 @@
 {
     outline:none;
     box-shadow: none;
+    font: size 12px; 
 }
 .form-floating>label,.form-check>label
 {
