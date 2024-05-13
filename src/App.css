@@ -1,0 +1,119 @@
+
+*
+{
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.feed-navbar
+{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.feed-navbar h1
+{
+    color:gainsboro;
+    font-size: 30px;
+}
+.feed-navbar button
+{
+    border:none;
+    border-radius: 8px;
+    font-size: 30px;
+    color:black;
+    background-color: transparent;
+}
+.feed-header .offcanvas
+{
+    width:220px;
+}
+.feed-header ul li
+{
+    list-style: none;
+    margin: 10px 0px;
+}
+.feed-header li a
+{
+    text-decoration: none;
+    color:black;
+    transition:0.5s;
+}
+.feed-header li a:hover
+{
+    color:gainsboro;
+    text-decoration: underline;
+}
+
+/*Feeds Application Registration & Login*/
+.feed-registration,
+.feed-login
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ .form-floating
+{
+    width:250px;
+    padding: 0px !important;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+.form-control,
+.form-control:focus
+{
+    outline:none;
+    box-shadow: none;
+}
+.form-floating>label,.form-check>label
+{
+    font-size: 12px;
+}
+.pwd-visibility
+{
+    position:relative;
+}
+#icon1
+{
+    position:absolute;
+    top:40%;
+    right:5%;
+    color:gray;
+    cursor: pointer;
+}
+.feed-registration button,
+.feed-login button
+{
+    background-color:gainsboro;
+    color:white;
+    border:none;
+    font-size: 12px;
+    width:100px;
+    height:30px;
+    border-radius: 12px;
+    transition: 1s;
+}
+.feed-registration button:hover,
+.feed-login button:hover
+{
+   
+    color:black;
+}
+.regErr
+{
+    font-size: 10px;
+    color:red;
+    height: 12px;
+}
+.reg-now
+{
+    font-size: 12px;
+}
+.reg-now a
+{
+    font-size: 14px;
+    font-style: italic;
+    margin-left: 8px;
+}
