@@ -83,8 +83,9 @@ const Register=()=>{
                 <div className="form-floating ">
                     <label for="floatingInput4">Roles</label>
                     <select className="form-control" id="floatingInput3" placeholder="" onChange={(e)=>setRole(e.target.value)}>
+                        <option value="">---</option>
                         <option value="user">User</option>
-                        <option value="admin">Admin</option>
+                        <option value="admin" disabled="true">Admin</option>
                    </select>
                 </div>
               
