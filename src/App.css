@@ -13,7 +13,7 @@
 }
 .feed-navbar h1
 {
-    color:gainsboro;
+    color:gray;
     font-size: 30px;
 }
 .feed-navbar button
@@ -41,7 +41,7 @@
 }
 .feed-header li a:hover
 {
-    color:gainsboro;
+    color:gray;
     text-decoration: underline;
 }
 
@@ -86,7 +86,7 @@
 .feed-registration button,
 .feed-login button
 {
-    background-color:gainsboro;
+    background-color:gray;
     color:white;
     border:none;
     font-size: 12px;
