@@ -1,7 +1,6 @@
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { isAuthenticated } from "./AuthenticationFunctions";
-import { useEffect } from "react";
 const Header=()=>{
     const location1=useLocation();
     console.log("location",location1);

@@ -20,7 +20,7 @@ const Login=()=>{
     const regClear=()=>{
         document.getElementById('floatingInput1').value="";
         document.getElementById('floatingPassword1').value="";
-        setEmail("");setPassword("");
+        setUserName("");setPassword("");
     }
     const handleLogin=async()=>{
         setErr1(""); setErr2("") ;setLoginMsg("");
@@ -48,7 +48,7 @@ const Login=()=>{
         }
     }
     return(
-       <section className="container-fluid todo-login py-5">
+       <section className="container-fluid feed-login py-5">
             <div className="form-floating ">
                 <input type="text" className="form-control" id="floatingInput1" placeholder="" onChange={(e)=>setUserName(e.target.value)}/>
                 <label for="floatingInput1">UserName</label>

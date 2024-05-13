@@ -4,7 +4,7 @@ import React from 'react';
 import Header from './Components/Header';
 import Register from './Components/Register';
 import Login from './Components/Login';
-import Feed from './Components/Feed';
+import Feeds from './Components/Feeds';
 import{BrowserRouter,Routes,Route,Navigate} from "react-router-dom";
 import { isAuthenticated } from './Components/AuthenticationFunctions';
 function App() {
@@ -28,7 +28,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/feed/register" element={<Register />} />
-      <Route path="/feed" element={<AuthenticatedRoute><Feed/></AuthenticatedRoute>}/>
+      <Route path="/feed" element={<AuthenticatedRoute><Feeds/></AuthenticatedRoute>}/>
     </Routes>
     </BrowserRouter>
     </>

@@ -40,7 +40,7 @@ const Register=()=>{
         (userName.trim()==="" || userName.length<3 || !nameRegEx.test(userName))?setErr1("Name must be atleast 3 characters!"):flag1=true;
         (password.trim()==="" || password.length<8 || !passwordRegEx1.test(password) || !passwordRegEx2.test(password)|| !passwordRegEx3.test(password)|| !passwordRegEx4.test(password))?setErr2("Password must be atleast 8 characters with one upercase,one lowercase,one symbol and one numeral!"):flag2=true;
         (email.trim()==="" ||!emailRegEx.test(email))?setErr3("Enter a valid email address!"):flag3=true;
-        (contact.trim()==="" || contact.length<10 || contact.length>10 || !phoneRegEx.test(contact))?setErr4("Enter a valid phone number!"):flag4=true;
+        (phoneNumber.trim()==="" || phoneNumber.length<10 || phoneNumber.length>10 || !phoneRegEx.test(phoneNumber))?setErr4("Enter a valid phone number!"):flag4=true;
         (role.trim()==="")?setErr5("Please select the role"):flag5=true
         if(flag1===true && flag2===true && flag3===true && flag4===true && flag5===true)
         {
