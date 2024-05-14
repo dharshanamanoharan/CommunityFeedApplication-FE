@@ -3,7 +3,9 @@ import axios from 'axios';
 const Feeds=()=>{
     //For error handling
     const [err1,setErr1]=useState("");
-    const [createMsg,setCreateMsg]=useState("")
+    const [createMsg,setCreateMsg]=useState("");
+    const [err2,setErr2]=useState("");
+    const [updateMsg,setUpdateMsg]=useState("")
     const [myFlag,setMyFlag]=useState(false);
     const [otherFlag,setOtherFlag]=useState(false);
     //For viewing posts
@@ -19,6 +21,7 @@ const Feeds=()=>{
     const [postCreator,setPostCreator]=useState(postAuthor);
     const [postDesc,setPostDesc]=useState("");
     const [postStatus,setPostStatus]=useState("pending");
+    const [updatePostId,setUpdatePostId]=useState("");
     //Getting all my posts
     async function getAllMyPosts()
     {
@@ -92,6 +95,40 @@ const Feeds=()=>{
         setMyFlag(false);
     }
     
+    async function handleUpdate()
+    {
+        setErr1("");
+        setCreateMsg("");
+        var flag1;
+        const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
+        postId=res.data.postCount;
+        (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
+        if(flag1 === true)
+        {
+            try
+            {
+                const res=await axios.post("http://localhost:8080/feed/user/createPost/"+user_Id,
+                    {
+                        userId,
+                        postId,
+                        postDate,
+                        postDesc,
+                        postCreator,
+                        postStatus
+                    }
+                )
+                setCreateMsg("Post Created Successfully awaiting Admin's approval!");
+                document.getElementById("feed-post").value="";
+                setPostDesc("");
+            }
+            catch(error)
+            {
+                console.log(error);
+                setCreateMsg("Post Creation Failed!");
+            }
+        } 
+    }
+
     return(
     <>
         <section className="feed-section container-fluid p-5">
@@ -116,7 +153,13 @@ const Feeds=()=>{
                         <p>Date:"{post.postDate}"</p>
                         <p>Creator:"{post.postCreator}"</p>
                         <div className='row row-cols-2 feed-edit'>
-                            <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">update</button>
+                            <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+                            onClick={()=>{ setUpdatePostId(post.postId);
+                                            setPostDate(post.postDate);
+                                            setUserId(post.userId);
+                                            setPostDesc(post.postDesc);
+                                            setPostStatus(post.postStatus);
+                                            setPostCreator(post.postCreator);}}>update</button>
                             <button className='col mx-5'>delete</button>
                         </div>
                     </li>)}
@@ -142,10 +185,10 @@ const Feeds=()=>{
                 <button data-bs-dismiss="modal" style={{background:"none", border:"none"}} ><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body">
-                <textarea id="feed-post1" style={{width:"100%"}} onChange={(e)=>setPostDesc(e.target.value)}></textarea>
+                <textarea id="feed-post1" style={{width:"100%"}} defaultValue={postDesc} onChange={(e)=>setPostDesc(e.target.value)}></textarea>
             </div>
             <div class="modal-footer">
-                <button >Update</button>
+                <button onClick={handleUpdate}>Update</button>
             </div>
             </div>
         </div>
