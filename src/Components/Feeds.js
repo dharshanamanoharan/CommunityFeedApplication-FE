@@ -30,8 +30,7 @@ const Feeds=()=>{
             {
 
             }
-        }
-    
+        } 
     }
     //To view my post
     async function handleViewMyPost()
