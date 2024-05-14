@@ -14,12 +14,17 @@ const Feeds=()=>{
     const [postCreator,setPostCreator]=useState("");
     const [postDesc,setPostDesc]=useState("");
     const [postStatus,setPostStatus]=useState("");
-
+    //Handling post creation
+    async function handleCreate()
+    {
+    }
+    //To view my post
     async function handleViewMyPost()
     {
         setMyFlag(true);
         setOtherFlag(false);
     }
+    //To view other's posts
     async function handleViewOtherPost()
     {
         setOtherFlag(true);
@@ -29,9 +34,9 @@ const Feeds=()=>{
     <>
         <section className="feed-section container-fluid p-5">
             <div className="row row1 mb-5">
-                <textarea id="feed-post"></textarea>
+                <textarea id="feed-post" onChange={(e)=>setPostDesc(e.target.value)}></textarea>
                 <p className="mb-0" style={{color:"red",fontSize:"10px"}}>{err1}</p>
-                <button className="create-post m-5">Create Post</button>
+                <button className="create-post m-5" onClick={handleCreate}>Create Post</button>
             </div>
             <div className="row">
                 <button className="view-my-post mx-5" onClick={handleViewMyPost}>View my Post</button>
