@@ -30,7 +30,7 @@ const Feeds=()=>{
         {
             try
             {
-                const res1=await axios.post("http://localhost:8080/feed/user/createPost",
+                const res=await axios.post("http://localhost:8080/feed/user/createPost",
                     {
                         userId,
                         postId,
@@ -57,7 +57,8 @@ const Feeds=()=>{
         setOtherFlag(false);
         try
         {
-
+            const res=await axios.get("http://localhost:8080/feed/user/myPosts"+user_Id);
+            setMyPosts(res.data.feedList);
         }
         catch(error)
         {
