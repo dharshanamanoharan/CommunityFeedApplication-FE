@@ -105,7 +105,7 @@ const Feeds=()=>{
         {
             try
             {
-                const res=await axios.post("http://localhost:8080/feed/user/createPost/"+user_Id,
+                const res=await axios.put("http://localhost:8080/feed/user/updatePost/"+user_Id,
                     {
                         userId,
                         postId,
@@ -115,8 +115,8 @@ const Feeds=()=>{
                         postStatus
                     }
                 )
-                setUpdateMsg("Post Created Successfully awaiting Admin's approval!");
-                document.getElementById("feed-post").value="";
+                setUpdateMsg("Post Updated Successfully and it is awaiting Admin's approval!");
+                document.getElementById("feed-post1").value="";
                 setPostDesc("");
             }
             catch(error)
