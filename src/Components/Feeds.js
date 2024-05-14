@@ -1,10 +1,20 @@
 import {useState} from 'react';
 const Feeds=()=>{
+    //For error handling
     const [err1,setErr1]=useState("");
     const [myFlag,setMyFlag]=useState(false);
     const [otherFlag,setOtherFlag]=useState(false);
+    //For viewing posts
     const [myPosts,setMyPosts]=useState([]);
     const [otherPosts,setOtherPosts]=useState([]);
+    // Post Model
+    const [userId,setUserId]=useState("");
+    const [postId,setPostId]=useState("");
+    const [postDate,setPostDate]=useState("");
+    const [postCreator,setPostCreator]=useState("");
+    const [postDesc,setPostDesc]=useState("");
+    const [postStatus,setPostStatus]=useState("");
+
     async function handleViewMyPost()
     {
         setMyFlag(true);
@@ -33,7 +43,7 @@ const Feeds=()=>{
                 <h3>My Posts</h3>
                 <ul className='row'>
                     <li>
-                        
+
                     </li>
                 </ul>
             </div>
