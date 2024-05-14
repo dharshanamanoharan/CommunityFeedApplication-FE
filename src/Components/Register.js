@@ -10,7 +10,7 @@ const Register=()=>{
     const [password,setPassword]=useState("");
     const [role,setRole]=useState("");
     //Regex
-    const nameRegEx=new RegExp(/^[A-Za-z]*$/);
+    const nameRegEx=new RegExp(/^[A-Za-z0-9]*$/);
     const emailRegEx=new RegExp(/^[A-za-z0-9]+@[a-zA-z]+.[a-zA-Z]{2,}$/);
     const phoneRegEx=new RegExp(/^[0-9]*$/);
     const passwordRegEx1=new RegExp(/[0-9]/);
@@ -82,7 +82,7 @@ const Register=()=>{
                 <p className="regErr">{err4}</p>
                 <div className="form-floating ">
                     <label for="floatingInput4">Roles</label>
-                    <select className="form-control" id="floatingInput3" placeholder="" onChange={(e)=>setRole(e.target.value)}>
+                    <select className="form-control" id="floatingInput4" placeholder="" onChange={(e)=>setRole(e.target.value)}>
                         <option value="">---</option>
                         <option value="user">User</option>
                         <option value="admin" disabled="true">Admin</option>
