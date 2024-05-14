@@ -26,8 +26,8 @@ function App() {
     <BrowserRouter>
     <Header />
     <Routes>
-      {(isAuthenticated()=== true) ? <Route path="/" element={<Home/>}/>:<Route path="/" element={<Login />} />}
-      {(isAuthenticated()=== true) ? <Route path="/" element={<Home/>}/>:<Route path="/" element={<Register />} />}
+      {(isAuthenticated()=== true) ? <Route path="/" element={<Feeds/>}/>:<Route path="/" element={<Login />} />}
+      {(isAuthenticated()=== true) ? <Route path="/feed/register" element={<Feeds/>}/>:<Route path="/feed/register" element={<Register />} />}
       <Route path="/feed" element={<AuthenticatedRoute><Feeds/></AuthenticatedRoute>}/>
     </Routes>
     </BrowserRouter>
