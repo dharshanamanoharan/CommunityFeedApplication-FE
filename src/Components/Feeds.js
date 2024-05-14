@@ -26,7 +26,7 @@ const Feeds=()=>{
         {
             console.log(userId);
             const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
-            setMyPosts(res.data);
+            setMyPosts(res.data.feedList);
             console.log(res.data);
         }
         catch(error)
@@ -42,7 +42,7 @@ const Feeds=()=>{
         setCreateMsg("");
         var flag1;
         const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
-        postId=(res.data.length >=1)? (res.data.length) : 0;
+        postId=res.data.postCount
         (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
         if(flag1 === true)
         {
@@ -116,7 +116,7 @@ const Feeds=()=>{
                         <p>"{post.postDate}"</p>
                         <p>"{post.postCreator}"</p>
                         <div>
-                            <button>update</button>
+                            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">update</button>
                             <button>delete</button>
                         </div>
                     </li>)}
@@ -131,6 +131,25 @@ const Feeds=()=>{
                 </ul>
             </div>
         </section>
+
+    {/*Update the post modal*/}
+    {/*-- Modal --*/}
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <textarea id="feed-post1" onChange={(e)=>setPostDesc(e.target.value)}></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Update</button>
+            </div>
+            </div>
+        </div>
+        </div>
     </> )
 }
 export default Feeds;
