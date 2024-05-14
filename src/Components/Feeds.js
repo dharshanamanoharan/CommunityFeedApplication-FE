@@ -23,7 +23,7 @@ const Feeds=()=>{
         setErr1("");
         var flag1;
         (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
-        if(flag1=== true)
+        if(flag1 === true)
         {
             try
             {
