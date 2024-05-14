@@ -7,7 +7,7 @@ const Feeds=()=>{
     //For viewing posts
     const [myPosts,setMyPosts]=useState([]);
     const [allPosts,setAllPosts]=useState([]);
-    // Post Model
+    //Post Model
     const user_Id=localStorage.getItem("userId");
     const [userId,setUserId]=useState(user_Id);
     const [postId,setPostId]=useState("");
