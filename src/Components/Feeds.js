@@ -6,14 +6,17 @@ const Feeds=()=>{
     const [otherFlag,setOtherFlag]=useState(false);
     //For viewing posts
     const [myPosts,setMyPosts]=useState([]);
-    const [otherPosts,setOtherPosts]=useState([]);
+    const [allPosts,setAllPosts]=useState([]);
     // Post Model
-    const [userId,setUserId]=useState("");
+    const user_Id=localStorage.getItem("userId");
+    const [userId,setUserId]=useState(user_Id);
     const [postId,setPostId]=useState("");
-    const [postDate,setPostDate]=useState("");
-    const [postCreator,setPostCreator]=useState("");
+    const date1=new Date().toISOString().split('T')[0];
+    const [postDate,setPostDate]=useState(date1);
+    const postAuthor=localStorage.getItem("authenticatedUser");
+    const [postCreator,setPostCreator]=useState(postAuthor);
     const [postDesc,setPostDesc]=useState("");
-    const [postStatus,setPostStatus]=useState("");
+    const [postStatus,setPostStatus]=useState("pending");
     //Handling post creation
     async function handleCreate()
     {
