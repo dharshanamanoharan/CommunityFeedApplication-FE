@@ -1,7 +1,9 @@
 import {useState} from 'react';
+import axios from 'axios';
 const Feeds=()=>{
     //For error handling
     const [err1,setErr1]=useState("");
+    const [createMsg,setCreateMsg]=useState("")
     const [myFlag,setMyFlag]=useState(false);
     const [otherFlag,setOtherFlag]=useState(false);
     //For viewing posts
@@ -21,17 +23,30 @@ const Feeds=()=>{
     async function handleCreate()
     {
         setErr1("");
+        setCreateMsg("");
         var flag1;
         (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
         if(flag1 === true)
         {
             try
             {
-
+                const res1=await axios.post("http://localhost:8080/feed/user/createPost",
+                    {
+                        userId,
+                        postId,
+                        postDate,
+                        postCreator,
+                        postStatus
+                    }
+                )
+                setCreateMsg("Post Created Successfully awaiting Admin's approval!");
+                document.getElementById("feed-post").value="";
+                setPostDesc("");
             }
             catch(error)
             {
-
+                console.log(error);
+                setCreateMsg("Post Creation Failed!");
             }
         } 
     }
@@ -40,6 +55,14 @@ const Feeds=()=>{
     {
         setMyFlag(true);
         setOtherFlag(false);
+        try
+        {
+
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
     }
     //To view other's posts
     async function handleViewOtherPost()
