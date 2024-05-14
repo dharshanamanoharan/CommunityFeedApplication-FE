@@ -3,13 +3,17 @@ const Feeds=()=>{
     const [err1,setErr1]=useState("");
     const [myFlag,setMyFlag]=useState(false);
     const [otherFlag,setOtherFlag]=useState(false);
+    const [myPosts,setMyPosts]=useState([]);
+    const [otherPosts,setOtherPosts]=useState([]);
     async function handleViewMyPost()
     {
         setMyFlag(true);
+        setOtherFlag(false);
     }
     async function handleViewOtherPost()
     {
         setOtherFlag(true);
+        setMyFlag(false);
     }
     return(
     <>
@@ -27,15 +31,15 @@ const Feeds=()=>{
         <section className='container-fluid p-5 view-post-section'>
             <div className='row my-post-list' style={{display:(myFlag)?"flex":"none"}}>
                 <h3>My Posts</h3>
-                <ul>
+                <ul className='row'>
                     <li>
-
+                        
                     </li>
                 </ul>
             </div>
             <div  className='row other-post-list' style={{display:(otherFlag)?"flex":"none"}}>
                 <h3>Other's Post</h3>
-                <ul>
+                <ul className='row'>
                     <li>
                         
                     </li>
