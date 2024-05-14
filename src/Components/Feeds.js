@@ -58,7 +58,8 @@ const Feeds=()=>{
         try
         {
             const res=await axios.get("http://localhost:8080/feed/user/myPosts"+user_Id);
-            setMyPosts(res.data.feedList);
+            setMyPosts(res.data);
+            console.log(res.data);
         }
         catch(error)
         {
