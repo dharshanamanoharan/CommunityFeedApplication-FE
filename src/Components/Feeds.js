@@ -97,12 +97,10 @@ const Feeds=()=>{
     
     async function handleUpdate()
     {
-        setErr1("");
-        setCreateMsg("");
+        setErr2("");
+        setUpdateMsg("");
         var flag1;
-        const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
-        postId=res.data.postCount;
-        (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
+        (postDesc.trim()==="" || postDesc.length<15)?setErr2("Your post must contain atleast 15 characters"): flag1=true;
         if(flag1 === true)
         {
             try
@@ -117,14 +115,14 @@ const Feeds=()=>{
                         postStatus
                     }
                 )
-                setCreateMsg("Post Created Successfully awaiting Admin's approval!");
+                setUpdateMsg("Post Created Successfully awaiting Admin's approval!");
                 document.getElementById("feed-post").value="";
                 setPostDesc("");
             }
             catch(error)
             {
                 console.log(error);
-                setCreateMsg("Post Creation Failed!");
+                setUpdateMsg("Post Creation Failed!");
             }
         } 
     }
