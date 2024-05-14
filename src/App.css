@@ -85,19 +85,21 @@
     cursor: pointer;
 }
 .feed-registration button,
-.feed-login button
+.feed-login button,
+.feed-section button
 {
     background-color:gray;
     color:white;
     border:none;
     font-size: 12px;
     width:100px;
-    height:30px;
+    height:50px;
     border-radius: 12px;
     transition: 1s;
 }
 .feed-registration button:hover,
-.feed-login button:hover
+.feed-login button:hover,
+.feed-section button:hover
 {
    
     color:black;
@@ -117,4 +119,24 @@
     font-size: 14px;
     font-style: italic;
     margin-left: 8px;
+}
+/*Feed Section*/
+#feed-post
+{
+    height:200px;
+}
+.feed-section 
+{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.feed-section .row1
+{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width:100%;
 }
