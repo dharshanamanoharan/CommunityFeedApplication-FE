@@ -86,20 +86,22 @@
 }
 .feed-registration button,
 .feed-login button,
-.feed-section button
+.feed-section button,
+.view-post-section button
 {
     background-color:gray;
     color:white;
     border:none;
     font-size: 12px;
     width:100px;
-    height:50px;
+    height:30px;
     border-radius: 12px;
     transition: 1s;
 }
 .feed-registration button:hover,
 .feed-login button:hover,
-.feed-section button:hover
+.feed-section button:hover,
+.view-section-button:hover
 {
    
     color:black;
@@ -121,7 +123,7 @@
     margin-left: 8px;
 }
 /*Feed Section*/
-#feed-post
+#feed-post,#feed-post1
 {
     height:200px;
 }
@@ -161,4 +163,10 @@
     border-radius: 8px;
     border:1px solid black;
     margin: 8px;
+}
+.updateModal .modal-footer,.feed-edit
+{
+    display:flex;
+    align-items:center;
+    justify-content: center;
 }

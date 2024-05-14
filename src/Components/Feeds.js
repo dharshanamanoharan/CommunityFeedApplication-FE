@@ -42,7 +42,7 @@ const Feeds=()=>{
         setCreateMsg("");
         var flag1;
         const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
-        postId=res.data.postCount
+        postId=res.data.postCount;
         (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
         if(flag1 === true)
         {
@@ -101,9 +101,9 @@ const Feeds=()=>{
                 <button className="create-post m-5" onClick={handleCreate}>Create Post</button>
                 <p className="mb-0" style={{color:(createMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{createMsg}</p>
             </div>
-            <div className="row">
-                <button className="view-my-post mx-5" onClick={handleViewMyPost}>View my Post</button>
-                <button className="view-my-post mx-5" onClick={handleViewOtherPost}>View other Post</button>
+            <div>
+                <button className="view-my-post mx-5" onClick={handleViewMyPost}>My Posts</button>
+                <button className="view-my-post mx-5" onClick={handleViewOtherPost}>Other's Posts</button>
             </div>
         </section>
         <section className='container-fluid p-5 view-post-section'>
@@ -111,13 +111,13 @@ const Feeds=()=>{
                 <h3>My Posts</h3>
                 <ul className='row'>
                   {myPosts && myPosts.map((post)=> 
-                    <li key={post.postId}>
-                        <p>"{post.postDesc}"</p>
-                        <p>"{post.postDate}"</p>
-                        <p>"{post.postCreator}"</p>
-                        <div>
-                            <button data-bs-toggle="modal" data-bs-target="#staticBackdrop">update</button>
-                            <button>delete</button>
+                    <li key={post.postId} className='p-2'>
+                        <p>Post:"{post.postDesc}"</p>
+                        <p>Date:"{post.postDate}"</p>
+                        <p>Creator:"{post.postCreator}"</p>
+                        <div className='row row-cols-2 feed-edit'>
+                            <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">update</button>
+                            <button className='col mx-5'>delete</button>
                         </div>
                     </li>)}
                 </ul>
@@ -125,7 +125,7 @@ const Feeds=()=>{
             <div  className='row other-post-list' style={{display:(otherFlag)?"flex":"none"}}>
                 <h3>Other's Post</h3>
                 <ul className='row'>
-                    <li>
+                    <li className='p-2'>
                         
                     </li>
                 </ul>
@@ -134,18 +134,18 @@ const Feeds=()=>{
 
     {/*Update the post modal*/}
     {/*-- Modal --*/}
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade updateModal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Post</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button data-bs-dismiss="modal" style={{background:"none", border:"none"}} ><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body">
-                <textarea id="feed-post1" onChange={(e)=>setPostDesc(e.target.value)}></textarea>
+                <textarea id="feed-post1" style={{width:"100%"}} onChange={(e)=>setPostDesc(e.target.value)}></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Update</button>
+                <button >Update</button>
             </div>
             </div>
         </div>
