@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import axios from 'axios';
 const Feeds=()=>{
     //For error handling
@@ -12,29 +12,48 @@ const Feeds=()=>{
     //Post Model
     const user_Id=localStorage.getItem("userId");
     const [userId,setUserId]=useState(user_Id);
-    const [postId,setPostId]=useState("");
+    let postId;
     const date1=new Date().toISOString().split('T')[0];
     const [postDate,setPostDate]=useState(date1);
     const postAuthor=localStorage.getItem("authenticatedUser");
     const [postCreator,setPostCreator]=useState(postAuthor);
     const [postDesc,setPostDesc]=useState("");
     const [postStatus,setPostStatus]=useState("pending");
+    //Getting all my posts
+    async function getAllMyPosts()
+    {
+        try
+        {
+            console.log(userId);
+            const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
+            setMyPosts(res.data);
+            console.log(res.data);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    useEffect(()=>getAllMyPosts,[]);
     //Handling post creation
     async function handleCreate()
     {
         setErr1("");
         setCreateMsg("");
         var flag1;
+        const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
+        postId=(res.data.length >=1)? (res.data.length) : 0;
         (postDesc.trim()==="" || postDesc.length<15)?setErr1("Your post must contain atleast 15 characters"): flag1=true;
         if(flag1 === true)
         {
             try
             {
-                const res=await axios.post("http://localhost:8080/feed/user/createPost",
+                const res=await axios.post("http://localhost:8080/feed/user/createPost/"+user_Id,
                     {
                         userId,
                         postId,
                         postDate,
+                        postDesc,
                         postCreator,
                         postStatus
                     }
@@ -55,7 +74,7 @@ const Feeds=()=>{
     {
         setMyFlag(true);
         setOtherFlag(false);
-        try
+      /*  try
         {
             const res=await axios.get("http://localhost:8080/feed/user/myPosts"+user_Id);
             setMyPosts(res.data);
@@ -64,7 +83,7 @@ const Feeds=()=>{
         catch(error)
         {
             console.log(error);
-        }
+        }*/
     }
     //To view other's posts
     async function handleViewOtherPost()
@@ -72,6 +91,7 @@ const Feeds=()=>{
         setOtherFlag(true);
         setMyFlag(false);
     }
+    
     return(
     <>
         <section className="feed-section container-fluid p-5">
@@ -79,6 +99,7 @@ const Feeds=()=>{
                 <textarea id="feed-post" onChange={(e)=>setPostDesc(e.target.value)}></textarea>
                 <p className="mb-0" style={{color:"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{err1}</p>
                 <button className="create-post m-5" onClick={handleCreate}>Create Post</button>
+                <p className="mb-0" style={{color:(createMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{createMsg}</p>
             </div>
             <div className="row">
                 <button className="view-my-post mx-5" onClick={handleViewMyPost}>View my Post</button>
@@ -89,9 +110,16 @@ const Feeds=()=>{
             <div className='row my-post-list' style={{display:(myFlag)?"flex":"none"}}>
                 <h3>My Posts</h3>
                 <ul className='row'>
-                    <li>
-
-                    </li>
+                  {myPosts && myPosts.map((post)=> 
+                    <li key={post.postId}>
+                        <p>"{post.postDesc}"</p>
+                        <p>"{post.postDate}"</p>
+                        <p>"{post.postCreator}"</p>
+                        <div>
+                            <button>update</button>
+                            <button>delete</button>
+                        </div>
+                    </li>)}
                 </ul>
             </div>
             <div  className='row other-post-list' style={{display:(otherFlag)?"flex":"none"}}>
