@@ -35,7 +35,8 @@ const Login=()=>{
                const res1=await axios.post("http://localhost:8080/feed/login",{userName,password});
                const res2=await axios.get("http://localhost:8080/feed/user/"+userName);
                setUserData(res2.data);
-               localStorage.setItem("userId1",res2.data.userId);
+               localStorage.setItem("userId",res2.data.userId);
+               localStorage.setItem("userRole",res2.data.role);
                localStorage.setItem("authenticatedUser",userName);
                navigator("/feed");
                setLoginMsg("");

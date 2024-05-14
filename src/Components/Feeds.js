@@ -49,7 +49,7 @@ const Feeds=()=>{
         <section className="feed-section container-fluid p-5">
             <div className="row row1 mb-5">
                 <textarea id="feed-post" onChange={(e)=>setPostDesc(e.target.value)}></textarea>
-                <p className="mb-0" style={{color:"red",fontSize:"10px"}}>{err1}</p>
+                <p className="mb-0" style={{color:"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{err1}</p>
                 <button className="create-post m-5" onClick={handleCreate}>Create Post</button>
             </div>
             <div className="row">
