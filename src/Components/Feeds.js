@@ -21,7 +21,11 @@ const Feeds=()=>{
     const [postCreator,setPostCreator]=useState(postAuthor);
     const [postDesc,setPostDesc]=useState("");
     const [postStatus,setPostStatus]=useState("pending");
+    //Update
     const [updatePostId,setUpdatePostId]=useState("");
+    const [updatePostDesc,setUpdatePostDesc]=useState("");
+    const [updatePostStatus,setUpdatePostStatus]=useState("pending");
+   
     //Getting all my posts
     async function getAllMyPosts()
     {
@@ -29,7 +33,8 @@ const Feeds=()=>{
         {
             console.log(userId);
             const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
-            setMyPosts(res.data.feedList);
+            var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
+            setMyPosts(myValidPost);
             console.log(res.data);
         }
         catch(error)
@@ -100,19 +105,17 @@ const Feeds=()=>{
         setErr2("");
         setUpdateMsg("");
         var flag1;
-        (postDesc.trim()==="" || postDesc.length<15)?setErr2("Your post must contain atleast 15 characters"): flag1=true;
+        (updatePostDesc.trim()==="" || updatePostDesc.length<15)?setErr2("Your post must contain atleast 15 characters"): flag1=true;
         if(flag1 === true)
         {
             try
             {
                 const res=await axios.put("http://localhost:8080/feed/user/updatePost/"+user_Id,
                     {
-                        userId,
-                        postId,
-                        postDate,
-                        postDesc,
-                        postCreator,
-                        postStatus
+            
+                        "postId":updatePostId,
+                        "postDesc":updatePostDesc,
+                        "postStatus":updatePostStatus
                     }
                 )
                 setUpdateMsg("Post Updated Successfully and it is awaiting Admin's approval!");
@@ -123,9 +126,32 @@ const Feeds=()=>{
             {
                 console.log(error);
                 setUpdateMsg("Post Creation Failed!");
+                document.getElementById("feed-post1").value="";
+                setPostDesc("");
             }
         } 
     }
+
+    async function handleDel(a,b)
+    {
+      
+            try
+            {
+                const res=await axios.put("http://localhost:8080/feed/user/updatePost/"+user_Id,
+                    {
+            
+                        "postId":a,
+                        "postDesc":b,
+                        "postStatus":"deleted"
+                    }
+                )
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        } 
+    
 
     return(
     <>
@@ -153,12 +179,10 @@ const Feeds=()=>{
                         <div className='row row-cols-2 feed-edit'>
                             <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
                             onClick={()=>{ setUpdatePostId(post.postId);
-                                            setPostDate(post.postDate);
-                                            setUserId(post.userId);
-                                            setPostDesc(post.postDesc);
-                                            setPostStatus(post.postStatus);
-                                            setPostCreator(post.postCreator);}}>update</button>
-                            <button className='col mx-5'>delete</button>
+                                            setUpdatePostDesc(post.postDesc);
+                                            setUpdatePostStatus(post.postStatus);
+                                           }}>update</button>
+                            <button className='col mx-5' onClick={()=>{handleDel(post.postId,post.postDesc)}}>delete</button>
                         </div>
                     </li>)}
                 </ul>
@@ -183,10 +207,12 @@ const Feeds=()=>{
                 <button data-bs-dismiss="modal" style={{background:"none", border:"none"}} ><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body">
-                <textarea id="feed-post1" style={{width:"100%"}} defaultValue={postDesc} onChange={(e)=>setPostDesc(e.target.value)}></textarea>
+                <textarea id="feed-post1" style={{width:"100%"}} defaultValue={updatePostDesc} onChange={(e)=>setUpdatePostDesc(e.target.value)}></textarea>
+                <p className="mb-0" style={{color:"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{err2}</p>
             </div>
             <div class="modal-footer">
                 <button onClick={handleUpdate}>Update</button>
+                <p className="mb-0" style={{color:(updateMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{updateMsg}</p>
             </div>
             </div>
         </div>
