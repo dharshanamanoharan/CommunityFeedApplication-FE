@@ -53,7 +53,7 @@ const Feeds=()=>{
                 var arr1=res.data[i].feedList;
                 for(var j=0;j<arr1.length;j++)
                 {
-                    if((arr1[j].postStatus !== "deleted") &&(arr1[j].userId === user_Id))
+                    if((arr1[j].postStatus === "approved") &&(arr1[j].userId !== user_Id))
                     {
                         filteredOtherPosts.push(arr1[j]);
                     }
@@ -200,12 +200,14 @@ const Feeds=()=>{
                         <p>Date:"{post.postDate}"</p>
                         <p>Creator:"{post.postCreator}"</p>
                         <div className='row row-cols-2 feed-edit'>
+                            {(post.postStatus==="pending")?<>
                             <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
                             onClick={()=>{ setUpdatePostId(post.postId);
                                             setUpdatePostDesc(post.postDesc);
                                             setUpdatePostStatus(post.postStatus);
                                            }}>update</button>
                             <button className='col mx-5' onClick={()=>{handleDel(post.postId,post.postDesc)}}>delete</button>
+                       </>:<></> }
                         </div>
                     </li>)}
                 </ul>
