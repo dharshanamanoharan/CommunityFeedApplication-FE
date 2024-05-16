@@ -42,7 +42,23 @@ const Feeds=()=>{
             console.log(error);
         }
     }
-    useEffect(()=>getAllMyPosts,[]);
+    //Getting all others posts
+    async function getAllOtherPosts()
+    {
+        try
+        {
+            console.log(userId);
+            const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
+            var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
+            setMyPosts(myValidPost);
+            console.log(res.data);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    useEffect(()=>{getAllMyPosts();getAllOtherPosts();},[]);
     //Handling post creation
     async function handleCreate()
     {
@@ -82,16 +98,6 @@ const Feeds=()=>{
     {
         setMyFlag(true);
         setOtherFlag(false);
-      /*  try
-        {
-            const res=await axios.get("http://localhost:8080/feed/user/myPosts"+user_Id);
-            setMyPosts(res.data);
-            console.log(res.data);
-        }
-        catch(error)
-        {
-            console.log(error);
-        }*/
     }
     //To view other's posts
     async function handleViewOtherPost()
@@ -152,9 +158,16 @@ const Feeds=()=>{
             }
         } 
     
-
+       // const onDateFocus = (e) => (e.target.type = "date");
+       // const onDateBlur = (e) => (e.target.type = "text");
     return(
     <>
+        {/*<input
+        onFocus={onDateFocus}
+        onBlur={onDateBlur}
+        type="text"
+        placeholder="Event Date"
+        />*/}
         <section className="feed-section container-fluid p-5">
             <div className="row row1 mb-5">
                 <textarea id="feed-post" onChange={(e)=>setPostDesc(e.target.value)}></textarea>

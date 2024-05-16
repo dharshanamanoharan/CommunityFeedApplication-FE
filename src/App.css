@@ -164,10 +164,17 @@
     border:1px solid black;
     margin: 8px;
 }
-.updateModal .modal-footer,.feed-edit
+.updateModal .modal-footer
 {
     display:flex;
     flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+.feed-edit
+{
+    display:flex;
+    flex-direction: row;
     align-items:center;
     justify-content: center;
 }
