@@ -55,10 +55,14 @@ const Feeds=()=>{
                 var arr1=res.data[i].feedList;
                 for(var j=0;j<arr1.length;j++)
                 {
-                    unfilteredOtherPosts.push((arr1[j].postStatus !== "deleted") &&(arr1[j].userId !== user_Id));
+                    if((arr1[j].postStatus !== "deleted") &&(arr1[j].userId === user_Id))
+                    {
+                        unfilteredOtherPosts.push(arr1[j]);
+                    }
                 }
 
             }
+            setAllPosts(unfilteredOtherPosts);
             console.log("UnfilteredOtherPosts",unfilteredOtherPosts);
         }
         catch(error)
@@ -211,9 +215,12 @@ const Feeds=()=>{
             <div  className='row other-post-list' style={{display:(otherFlag)?"flex":"none"}}>
                 <h3>Other's Post</h3>
                 <ul className='row'>
-                    <li className='p-2'>
-                        
-                    </li>
+                {allPosts && allPosts.map((post)=> 
+                    <li key={post.postId} className='p-2'>
+                        <p>Post:"{post.postDesc}"</p>
+                        <p>Date:"{post.postDate}"</p>
+                        <p>Creator:"{post.postCreator}"</p>
+                    </li>)}
                 </ul>
             </div>
         </section>
