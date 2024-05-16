@@ -36,7 +36,7 @@ const AdminPanel=()=>{
               console.log(error);
           }
       }
-      useEffect(()=>{getAllOtherPosts();},[updatePost]);
+      useEffect(()=>{getAllOtherPosts();},[]);
 
       //Handling  approve and delete
       async function updatePost(a,b,c,d)
