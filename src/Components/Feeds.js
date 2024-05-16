@@ -48,7 +48,7 @@ const Feeds=()=>{
         try
         {
             console.log(userId);
-            const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
+            const res=await axios.get("http://localhost:8080/feed/allApprovedPosts");
             var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
             setMyPosts(myValidPost);
             console.log(res.data);
