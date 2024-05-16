@@ -135,31 +135,29 @@ const Feeds=()=>{
                     }
                 )
                 setUpdateMsg("Post Updated Successfully and it is awaiting Admin's approval!");
-                document.getElementById("feed-post1").value="";
-                setPostDesc("");
+                console.log(res);
             }
             catch(error)
             {
                 console.log(error);
-                setUpdateMsg("Post Creation Failed!");
-                document.getElementById("feed-post1").value="";
-                setPostDesc("");
+                setUpdateMsg("Post updation Failed!");
             }
         } 
     }
 
     async function handleDel(a)
     {
-      
+      var obj1={
+        "postId":a
+      }
             try
             {
-                const res=await axios.delete("http://localhost:8080/feed/user/deletePost/"+user_Id,
-                    {
-                        "postId":a,
-                        "postDesc":"",
-                        "postStatus":""
-                    }
-                )
+                const res=await axios.delete(`http://localhost:8080/feed/user/deletePost/${user_Id}`,
+                {
+                    "postId":a
+                }
+            )
+                console.log(res);
             }
             catch(error)
             {
