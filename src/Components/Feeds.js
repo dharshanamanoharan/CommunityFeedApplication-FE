@@ -153,7 +153,7 @@ const Feeds=()=>{
       
             try
             {
-                const res=await axios.delete("http://localhost:8080/feed/user/updatePost/"+user_Id,
+                const res=await axios.delete("http://localhost:8080/feed/user/deletePost/"+user_Id,
                     {
             
                         "postId":a,
