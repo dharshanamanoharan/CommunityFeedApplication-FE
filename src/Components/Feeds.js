@@ -155,9 +155,9 @@ const Feeds=()=>{
             {
                 const res=await axios.delete("http://localhost:8080/feed/user/deletePost/"+user_Id,
                     {
-            
                         "postId":a,
-                    
+                        "postDesc":"",
+                        "postStatus":""
                     }
                 )
             }
@@ -205,7 +205,7 @@ const Feeds=()=>{
                                             setUpdatePostDesc(post.postDesc);
                                             setUpdatePostStatus(post.postStatus);
                                            }}>update</button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.postId)}}>delete</button>
+                            <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}>delete</button>
                        </>:<></> }
                         </div>
                     </li>)}
