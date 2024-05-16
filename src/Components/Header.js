@@ -1,10 +1,11 @@
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { isAuthenticated } from "./AuthenticationFunctions";
+import { isAuthenticated , isAuthorized } from "./AuthenticationFunctions";
 const Header=()=>{
     const location1=useLocation();
-    console.log("check authenticated1-Boolean Result",isAuthenticated())
-    console.log("check authenticated2-LoggedIn userName",localStorage.getItem('authenticatedUser'))
+    console.log("check authenticated1-Boolean Result",isAuthenticated());
+    console.log("check authenticated2-LoggedIn userName",localStorage.getItem('authenticatedUser'));
+    console.log("check authorized1-Boolean Result",isAuthorized())
     const navigator=useNavigate();
     const handleLogout=()=>{
         navigator("/");

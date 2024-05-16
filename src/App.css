@@ -13,7 +13,7 @@
 }
 .feed-navbar h1
 {
-    color:gray;
+    color:black;
     font-size: 30px;
 }
 .feed-navbar button
@@ -30,7 +30,7 @@
 }
 .feed-header ul li
 {
-    list-style: none;
+    list-style:none;
     margin: 10px 0px;
 }
 .feed-header li a
@@ -151,7 +151,7 @@
 }
 .view-post-section ul
 {
-    list-style: none;
+    list-style: decimal;
     display:flex;
     flex-direction: column;
     align-items:center;

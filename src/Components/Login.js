@@ -38,7 +38,7 @@ const Login=()=>{
                localStorage.setItem("userId",res2.data.id);
                localStorage.setItem("userRole",res2.data.role);
                localStorage.setItem("authenticatedUser",userName);
-               navigator("/feed");
+              (res2.data.role === "admin")? navigator("/adminPanel"): navigator("/feed");
                setLoginMsg("");
             }
             catch(error)

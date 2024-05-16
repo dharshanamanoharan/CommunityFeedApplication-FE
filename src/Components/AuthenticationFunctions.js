@@ -11,7 +11,19 @@ export const isAuthenticated=()=>
           return true;
       }
     };
-
+//To Check and confirm whether the user is admin or not
+export const isAuthorized=()=>
+  {
+    const loggedUser=localStorage.getItem("userRole");
+    if(loggedUser === "admin")
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+    }
+  };
 //To toggle password visibility
 export const showPassword1=()=>{
   var field1=document.getElementById("floatingPassword1");
