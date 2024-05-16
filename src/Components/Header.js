@@ -3,9 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { isAuthenticated } from "./AuthenticationFunctions";
 const Header=()=>{
     const location1=useLocation();
-    console.log("location",location1);
-    console.log("check authenticated1",isAuthenticated())
-    console.log("check authenticated2",localStorage.getItem('authenticatedUser'))
+    console.log("check authenticated1-Boolean Result",isAuthenticated())
+    console.log("check authenticated2-LoggedIn userName",localStorage.getItem('authenticatedUser'))
     const navigator=useNavigate();
     const handleLogout=()=>{
         navigator("/");
