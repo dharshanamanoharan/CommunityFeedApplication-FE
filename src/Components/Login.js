@@ -15,13 +15,6 @@ const Login=()=>{
     const [err2,setErr2]=useState("");
     const [loginMsg,setLoginMsg]=useState("");
 
-    
-    //To Clear
-    const regClear=()=>{
-        document.getElementById('floatingInput1').value="";
-        document.getElementById('floatingPassword1').value="";
-        setUserName("");setPassword("");
-    }
     const handleLogin=async()=>{
         setErr1(""); setErr2("") ;setLoginMsg("");
         var flag1,flag2;

@@ -148,17 +148,16 @@ const Feeds=()=>{
         } 
     }
 
-    async function handleDel(a,b)
+    async function handleDel(a)
     {
       
             try
             {
-                const res=await axios.put("http://localhost:8080/feed/user/updatePost/"+user_Id,
+                const res=await axios.delete("http://localhost:8080/feed/user/updatePost/"+user_Id,
                     {
             
                         "postId":a,
-                        "postDesc":b,
-                        "postStatus":"deleted"
+                    
                     }
                 )
             }
@@ -206,7 +205,7 @@ const Feeds=()=>{
                                             setUpdatePostDesc(post.postDesc);
                                             setUpdatePostStatus(post.postStatus);
                                            }}>update</button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.postId,post.postDesc)}}>delete</button>
+                            <button className='col mx-5' onClick={()=>{handleDel(post.postId)}}>delete</button>
                        </>:<></> }
                         </div>
                     </li>)}
