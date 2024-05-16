@@ -147,16 +147,10 @@ const Feeds=()=>{
 
     async function handleDel(a)
     {
-      var obj1={
-        "postId":a
-      }
+     
             try
             {
-                const res=await axios.delete(`http://localhost:8080/feed/user/deletePost/${user_Id}`,
-                {
-                    "postId":a
-                }
-            )
+                const res=await axios.delete(`http://localhost:8080/feed/user/deletePost/${user_Id}`,{data:{"postId":a}})
                 console.log(res);
             }
             catch(error)
