@@ -49,7 +49,17 @@ const Feeds=()=>{
         {
             console.log(userId);
             const res=await axios.get("http://localhost:8080/feed/allApprovedPosts");
-            console.log(res.data);
+            var unfilteredOtherPosts=[];
+            for(var i=0;i<(res.data.length);i++)
+            {
+                var arr1=res.data[i].feedList;
+                for(var j=0;j<arr1.length;j++)
+                {
+                    unfilteredOtherPosts.push((arr1[j].postStatus !== "deleted") &&(arr1[j].userId !== user_Id));
+                }
+
+            }
+            console.log("UnfilteredOtherPosts",unfilteredOtherPosts);
         }
         catch(error)
         {
