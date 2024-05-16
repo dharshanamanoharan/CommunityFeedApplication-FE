@@ -36,20 +36,20 @@ const AdminPanel=()=>{
               console.log(error);
           }
       }
-      useEffect(()=>{getAllOtherPosts();},[]);
+      useEffect(()=>{getAllOtherPosts();},[updatePost]);
 
-      //Handling delete
-      async function handleDel(a,b)
+      //Handling  approve and delete
+      async function updatePost(a,b,c,d)
       {
         
               try
               {
-                  const res=await axios.put("http://localhost:8080/feed/user/updatePost/"+"user_Id",
+                  const res=await axios.put("http://localhost:8080/feed/user/updatePost/"+c,
                       {
               
                           "postId":a,
                           "postDesc":b,
-                          "postStatus":"deleted"
+                          "postStatus":d
                       }
                   )
               }
@@ -71,11 +71,8 @@ const AdminPanel=()=>{
                         <p>Creator:"{post.postCreator}"</p>
                         <div className='row row-cols-2 feed-edit'>
                             <button className="col mx-5"
-                            onClick={()=>{ setUpdatePostId(post.postId);
-                                            setUpdatePostDesc(post.postDesc);
-                                            setUpdatePostStatus(post.postStatus);
-                                           }}>Approve</button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.postId,post.postDesc)}}>delete</button>
+                            onClick={()=>{updatePost(post.postId,post.postDesc,post.userId,"approved")}}>Approve</button>
+                            <button className='col mx-5' onClick={()=>{updatePost(post.postId,post.postDesc,post.userId,"deleted")}}>delete</button>
                         </div>
                     </li>)}
                 </ul>
