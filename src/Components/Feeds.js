@@ -31,11 +31,10 @@ const Feeds=()=>{
     {
         try
         {
-            console.log(userId);
             const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
             var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
             setMyPosts(myValidPost);
-            console.log(res.data);
+            console.log("My Posts",myValidPost);
         }
         catch(error)
         {
@@ -47,9 +46,8 @@ const Feeds=()=>{
     {
         try
         {
-            console.log(userId);
             const res=await axios.get("http://localhost:8080/feed/allApprovedPosts");
-            var unfilteredOtherPosts=[];
+            var filteredOtherPosts=[];
             for(var i=0;i<(res.data.length);i++)
             {
                 var arr1=res.data[i].feedList;
@@ -57,13 +55,13 @@ const Feeds=()=>{
                 {
                     if((arr1[j].postStatus !== "deleted") &&(arr1[j].userId === user_Id))
                     {
-                        unfilteredOtherPosts.push(arr1[j]);
+                        filteredOtherPosts.push(arr1[j]);
                     }
                 }
 
             }
-            setAllPosts(unfilteredOtherPosts);
-            console.log("UnfilteredOtherPosts",unfilteredOtherPosts);
+            setAllPosts(filteredOtherPosts);
+            console.log("filteredOtherPosts",filteredOtherPosts);
         }
         catch(error)
         {
@@ -224,7 +222,6 @@ const Feeds=()=>{
                 </ul>
             </div>
         </section>
-
     {/*Update the post modal*/}
     {/*-- Modal --*/}
         <div class="modal fade updateModal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
