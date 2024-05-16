@@ -35,6 +35,7 @@ const Header=()=>{
                         <>
                             <li><Link to="/feed"><i className="me-2 fa-solid fa-house"></i>Home</Link></li>
                             {(isAuthenticated()=== true) ? <br/>:    <li><Link to="/"><i className="me-2 fa-solid fa-power-off"></i>Login</Link></li> }
+                            {(isAuthorized()=== true) ? <li><Link to="/adminPanel"><i class="me-2 fa-solid fa-user-tie"></i>Admin Panel</Link></li> : <br/>}
                             {(isAuthenticated()=== true) ? <li><Link to="/" onClick={handleLogout}><i className="me-2 fa-solid fa-power-off"></i>Logout</Link></li>:<></>}
                         </>
                     </ul>
