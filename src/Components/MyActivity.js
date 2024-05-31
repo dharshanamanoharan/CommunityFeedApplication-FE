@@ -1,6 +1,16 @@
 import {useState,useEffect} from 'react';
 import axios from 'axios';
 const MyActivity=()=>{
+      //For error handling
+      const [err1,setErr1]=useState("");
+      const [createMsg,setCreateMsg]=useState("");
+      const [err2,setErr2]=useState("");
+      const [updateMsg,setUpdateMsg]=useState("")
+      const [myFlag,setMyFlag]=useState(false);
+      const [otherFlag,setOtherFlag]=useState(false);
+
+      //For viewing posts
+      const [myPosts,setMyPosts]=useState([]);
     
       //Post Model
       const user_Id=localStorage.getItem("userId");
