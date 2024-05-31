@@ -104,8 +104,8 @@ const MyActivity=()=>{
                         onClick={()=>{ setUpdatePostId(post.postId);
                                         setUpdatePostDesc(post.postDesc);
                                         setUpdatePostStatus(post.postStatus);
-                                       }}>update</button>
-                        <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}>delete</button>
+                                       }}><i className="me-2 fa-solid fa-pen-to-square"></i>update</button>
+                        <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}><i className="me-2 fa-solid fa-trash"></i>delete</button>
                    </>:<></> }
                     </div>
                 </li>)}
