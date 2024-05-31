@@ -26,6 +26,24 @@ const MyActivity=()=>{
       const [updatePostId,setUpdatePostId]=useState("");
       const [updatePostDesc,setUpdatePostDesc]=useState("");
       const [updatePostStatus,setUpdatePostStatus]=useState("pending");
+
+      
+    //Getting all my posts
+    async function getAllMyPosts()
+    {
+        try
+        {
+            const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
+            var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
+            setMyPosts(myValidPost);
+            console.log("My Posts",myValidPost);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+    useEffect(()=>{getAllMyPosts();},[]);
     //Handle Update
     async function handleUpdate()
     {
