@@ -26,7 +26,7 @@ const Header=()=>{
                     </button>}
                 </div>
                 <div className="col-12 text-center">
-                    <h1>Feeds Application</h1>
+                    <h1>Feed Buzz</h1>
                 </div>
             </div>
             <div className="offcanvas offcanvas-start pt-2 pb-5" tabindex="-1" id="offcanvasExample" >
@@ -35,6 +35,8 @@ const Header=()=>{
                     <ul className="px-0">
                         <>
                             <li><Link to="/feed"><i className="me-2 fa-solid fa-house"></i>Home</Link></li>
+                            {(isAuthenticated()=== true) ? <li><Link to="/"><i class="me-2 fa-solid fa-rss"></i>Public Feed</Link></li>:<></>}
+                            {(isAuthenticated()=== true) ? <li><Link to="/"><i class="me-2 fa-solid fa-chart-line"></i>My Activity</Link></li>:<></>}
                             {(isAuthenticated()=== true) ? <></>:    <li><Link to="/"><i className="me-2 fa-solid fa-power-off"></i>Login</Link></li> }
                             {(isAuthorized()=== true) ? <li><Link to="/adminPanel"><i class="me-2 fa-solid fa-user-tie"></i>Admin Panel</Link></li> : <></>}
                             {(isAuthenticated()=== true) ? <li><Link to="/" onClick={handleLogout}><i className="me-2 fa-solid fa-power-off"></i>Logout</Link></li>:<></>}

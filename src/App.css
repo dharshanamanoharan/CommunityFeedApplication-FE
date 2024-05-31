@@ -33,13 +33,15 @@
 {
     list-style:none;
     margin: 10px 0px;
-    text-align: center;
+    text-align: left;
+    margin-left: 16px;
 }
 .feed-header li a
 {
     text-decoration: none;
     color:rgb(227, 68, 11);
     transition:0.5s;
+    font-size: 14px;
 }
 .feed-header li a:hover
 {
@@ -152,6 +154,7 @@
     background-repeat: no-repeat;
     background-position: left;
     background-color: wheat;
+    height: 90vh;
 }
 .feed-section .row1
 {
