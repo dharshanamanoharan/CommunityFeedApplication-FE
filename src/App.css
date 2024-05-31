@@ -104,7 +104,7 @@
 .feed-section button,
 .view-post-section button
 {
-    background-color:gray;
+    background-color:#f4715a;
     color:white;
     border:none;
     font-size: 12px;
@@ -118,7 +118,6 @@
 .feed-section button:hover,
 .view-section-button:hover
 {
-   
     color:black;
 }
 .regErr
