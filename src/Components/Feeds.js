@@ -157,7 +157,7 @@ const Feeds=()=>{
             {
                 console.log(error);
             }
-        } 
+    } 
     
        // const onDateFocus = (e) => (e.target.type = "date");
        // const onDateBlur = (e) => (e.target.type = "text");

@@ -8,6 +8,7 @@ import Feeds from './Components/Feeds';
 import AdminPanel from './Components/AdminPanel';
 import{BrowserRouter,Routes,Route,Navigate} from "react-router-dom";
 import { isAuthenticated , isAuthorized} from './Components/AuthenticationFunctions';
+import MyActivity from './Components/MyActivity';
 function App() {
   //Protected Routes to Display pages based on Authentication
   function AuthenticatedRoute({children})
@@ -40,6 +41,7 @@ function App() {
     <Routes>
       {(isAuthenticated()=== true) ? <Route path="/" element={<Feeds/>}/>:<Route path="/" element={<Login />} />}
       {(isAuthenticated()=== true) ? <Route path="/feed/register" element={<Feeds/>}/>:<Route path="/feed/register" element={<Register />} />}
+      {(isAuthenticated()=== true) ? <Route path="/feed/myActivity" element={<MyActivity/>}/>:<Route path="/feed/myActivity" element={<Register />} />}
       <Route path="/feed" element={<AuthenticatedRoute><Feeds/></AuthenticatedRoute>}/>
       <Route path="/adminPanel" element={<AuthorizedRoute><AdminPanel/></AuthorizedRoute>}/>
     </Routes>
