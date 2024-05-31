@@ -43,7 +43,7 @@ const MyActivity=()=>{
             console.log(error);
         }
     }
-    useEffect(()=>{getAllMyPosts();},[]);
+    useEffect(()=>{getAllMyPosts();},[handleUpdate,handleDel]);
     //Handle Update
     async function handleUpdate()
     {
@@ -94,18 +94,18 @@ const MyActivity=()=>{
             <h3>My Posts</h3>
             <ul className='row'>
               {myPosts && myPosts.map((post)=> 
-                <li key={post.postId} className='p-2'>
+                <li key={post.postId} className='p-2 feed-li'>
                     <p>Post:"{post.postDesc}"</p>
                     <p>Date:"{post.postDate}"</p>
                     <p>Creator:"{post.postCreator}"</p>
-                    <div className='row row-cols-2 feed-edit'>
+                    <div className='feed-edit'>
                         {(post.postStatus==="pending")?<>
-                        <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+                        <button className="mx-5 my-update" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
                         onClick={()=>{ setUpdatePostId(post.postId);
                                         setUpdatePostDesc(post.postDesc);
                                         setUpdatePostStatus(post.postStatus);
-                                       }}><i className="me-2 fa-solid fa-pen-to-square"></i>update</button>
-                        <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}><i className="me-2 fa-solid fa-trash"></i>delete</button>
+                                       }}><i className="fa-solid fa-pen-to-square my-delete"></i></button>
+                        <button className='mx-5 my-delete' onClick={()=>{handleDel(post.postId);}}><i className="fa-solid fa-trash"></i></button>
                    </>:<></> }
                     </div>
                 </li>)}

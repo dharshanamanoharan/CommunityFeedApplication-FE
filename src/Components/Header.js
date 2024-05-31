@@ -3,9 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { isAuthenticated , isAuthorized } from "./AuthenticationFunctions";
 const Header=()=>{
     const location1=useLocation();
-    console.log("check authenticated1-Boolean Result",isAuthenticated());
-    console.log("check authenticated2-LoggedIn userName",localStorage.getItem('authenticatedUser'));
-    console.log("check authorized1-Boolean Result",isAuthorized())
+    //console.log("check authenticated1-Boolean Result",isAuthenticated());
+    //console.log("check authenticated2-LoggedIn userName",localStorage.getItem('authenticatedUser'));
+    //console.log("check authorized1-Boolean Result",isAuthorized())
     const navigator=useNavigate();
     const handleLogout=()=>{
         navigator("/");
@@ -19,7 +19,7 @@ const Header=()=>{
                 <div className=" text-start">
                  {((location1.pathname).includes("/feed/register") || (location1.pathname).includes("/feed/profile"))
                     ? <button onClick={()=>navigator("/")}>
-                        <i class="fa-solid fa-arrow-left"></i>
+                        <i className="fa-solid fa-arrow-left"></i>
                       </button>
                     :<button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
                         <i className="fa-solid fa-bars"></i>

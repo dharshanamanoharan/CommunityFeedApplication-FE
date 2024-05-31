@@ -173,7 +173,7 @@
 }
 .view-post-section ul
 {
-    list-style: decimal;
+    list-style: none;
     display:flex;
     flex-direction: column;
     align-items:center;
@@ -210,4 +210,41 @@
     flex-direction: row;
     align-items:center;
     justify-content: center;
+}
+.my-post-list button
+{
+    width:25px;
+    height:25px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+.feed-edit
+{
+    position: absolute;
+    right:-18%;
+    top:0.5%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+.feed-li
+{
+    position: relative;
+    background-color: white;
+}
+.view-post-section
+{
+    background-image: url("../public/Processing-pana.svg");
+    background-repeat: no-repeat;
+    background-position-x: 250%;
+    background-color: wheat;
+}
+.view-post-section h3
+{
+    color:rgb(227, 68, 11);
+    text-align: center;
 }
