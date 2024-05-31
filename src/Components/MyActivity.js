@@ -72,7 +72,7 @@ const MyActivity=()=>{
     } 
     return(
         <section className='container-fluid p-5 view-post-section'>
-        <div className='row my-post-list' style={{display:(myFlag)?"flex":"none"}}>
+        <div className='row my-post-list' style={{display:"flex"}}>
             <h3>My Posts</h3>
             <ul className='row'>
               {myPosts && myPosts.map((post)=> 
