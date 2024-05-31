@@ -91,7 +91,7 @@ const MyActivity=()=>{
     return(
         <section className='container-fluid p-5 view-post-section'>
         <div className='row my-post-list' style={{display:"flex"}}>
-            <h3>My Posts</h3>
+            <h3><i className="me-2 fa-solid fa-mug-saucer"></i>My Buzz</h3>
             <ul className='row'>
               {myPosts && myPosts.map((post)=> 
                 <li key={post.postId} className='p-2 feed-li'>

@@ -15,18 +15,12 @@ const Header=()=>{
     
     return(
         <section className="feed-header">
-            <div className="row feed-navbar sticky-top px-0 mx-0 py-3">
-                <div className=" text-start">
-                 {((location1.pathname).includes("/feed/register") || (location1.pathname).includes("/feed/profile"))
-                    ? <button onClick={()=>navigator("/")}>
-                        <i className="fa-solid fa-arrow-left"></i>
-                      </button>
-                    :<button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
-                        <i className="fa-solid fa-bars"></i>
-                    </button>}
-                </div>
-                <div className="col-12 text-center">
-                    <h1>Feed Buzz</h1>
+            <div className="row feed-navbar sticky-top px-0 mx-0 py-1">
+               <div><button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
+                    <i className="fa-solid fa-bars"></i>
+                </button></div>
+                <div className="col-12 ms-5">
+                    <a className="navbar-brand"><Link to="/"><img src={"../feedBuzzLogo.png"} className="img-fluid" style={{height:"100px",width:"100px"}}/>Feed Buzz</Link></a>
                 </div>
             </div>
             <div className="offcanvas offcanvas-start pt-2 pb-5" tabindex="-1" id="offcanvasExample" >

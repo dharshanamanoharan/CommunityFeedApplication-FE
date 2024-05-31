@@ -14,16 +14,19 @@
 }
 .feed-navbar h1
 {
-    color:rgb(227, 68, 11);
+    color:#f4715a;
     font-size: 30px;
 }
 .feed-navbar button
 {
     border:none;
     border-radius: 8px;
-    font-size: 30px;
-    color:rgb(227, 68, 11);
+    font-size: 20px;
+    color:#f4715a;
     background-color: transparent;
+    position: absolute;
+    top:20%;
+    left:1%
 }
 .feed-header .offcanvas
 {
@@ -39,27 +42,21 @@
 .feed-header li a
 {
     text-decoration: none;
-    color:rgb(227, 68, 11);
+    color:#f4715a;
     transition:0.5s;
     font-size: 14px;
 }
 .feed-header li a:hover
 {
-    color:rgb(144, 38, 0);
+    color:rgb(241, 76, 15);
     text-decoration: underline;
 }
 .navbar-brand a
 {
     font-size: 22px;
-    color:rgb(227, 68, 11);
+    color:#f4715a;
     text-decoration: none !important;
     font-weight: bold;
-}
-.text-start
-{
-    position: absolute;
-    top:10%;
-    left:1%
 }
 
 /*Feeds Application Registration & Login*/
@@ -219,6 +216,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+    border: 1px solid rgb(56, 55, 55);
 }
 .feed-edit
 {
@@ -245,6 +243,7 @@
 }
 .view-post-section h3
 {
-    color:rgb(227, 68, 11);
+    color:rgb(56, 55, 55);
+    font-size: 24px;
     text-align: center;
 }

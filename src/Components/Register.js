@@ -1,6 +1,7 @@
 import { showPassword1,showPassword2 } from "./AuthenticationFunctions";
 import { useState } from "react";
 import axios from "axios";
+import {Link} from "react-router-dom";
 const Register=()=>{
 
     //Register field Values
@@ -41,11 +42,10 @@ const Register=()=>{
         (password.trim()==="" || password.length<8 || !passwordRegEx1.test(password) || !passwordRegEx2.test(password)|| !passwordRegEx3.test(password)|| !passwordRegEx4.test(password))?setErr2("Password must be atleast 8 characters with one upercase,one lowercase,one symbol and one numeral!"):flag2=true;
         (email.trim()==="" ||!emailRegEx.test(email))?setErr3("Enter a valid email address!"):flag3=true;
         (phoneNumber.trim()==="" || phoneNumber.length<10 || phoneNumber.length>10 || !phoneRegEx.test(phoneNumber))?setErr4("Enter a valid phone number!"):flag4=true;
-        (role.trim()==="")?setErr5("Please select the role"):flag5=true
-        if(flag1===true && flag2===true && flag3===true && flag4===true && flag5===true)
+        if(flag1===true && flag2===true && flag3===true && flag4===true)
         {
             try{
-                const res=await axios.post("http://localhost:8080/feed/register",{userName,email,phoneNumber,password,role})
+                const res=await axios.post("http://localhost:8080/feed/register",{userName,email,phoneNumber,password})
                 console.log("Registration success",res.data);
                 setRegMsg("Updated Successfully");
                 regClear();
@@ -80,19 +80,9 @@ const Register=()=>{
                     <label for="floatingInput3">Phone Number</label>
                 </div>
                 <p className="regErr">{err4}</p>
-                <div className="form-floating ">
-                    <label for="floatingInput4">Roles</label>
-                    <select className="form-control" id="floatingInput4" placeholder="" onChange={(e)=>setRole(e.target.value)}>
-                        <option value="">---</option>
-                        <option value="user">User</option>
-                        <option value="admin" disabled="true">Admin</option>
-                   </select>
-                </div>
-              
-                <p className="regErr">{err5}</p>
                 <button className="m-3" onClick={handleRegister}>Register</button>
                 <p className="regErr" style={{color:(regMsg.includes("Success"))?"green":"red"}}>{regMsg}</p>
-
+                <p className="reg-now">Do you have an account?<Link to="/">Login</Link></p>
         </section>
     );
 }
