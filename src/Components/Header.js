@@ -16,7 +16,7 @@ const Header=()=>{
     return(
         <section className="feed-header">
             <div className="row feed-navbar sticky-top px-0 mx-0 py-3">
-                <div className="col-1 text-start">
+                <div className=" text-start">
                  {((location1.pathname).includes("/feed/register") || (location1.pathname).includes("/feed/profile"))
                     ? <button onClick={()=>navigator("/")}>
                         <i class="fa-solid fa-arrow-left"></i>
@@ -25,13 +25,14 @@ const Header=()=>{
                         <i className="fa-solid fa-bars"></i>
                     </button>}
                 </div>
-                <div className="col-11 text-center">
+                <div className="col-12 text-center">
                     <h1>Feeds Application</h1>
                 </div>
             </div>
-            <div className="offcanvas offcanvas-start py-5" tabindex="-1" id="offcanvasExample" >
+            <div className="offcanvas offcanvas-start pt-2 pb-5" tabindex="-1" id="offcanvasExample" >
                 <div className="offcanvas-body">
-                    <ul>
+                <a className="navbar-brand"><Link to="/"><img src={"../feedBuzzLogo.png"} className="img-fluid" style={{height:"70px",width:"70px"}}/>FeedBuzz</Link></a>
+                    <ul className="px-0">
                         <>
                             <li><Link to="/feed"><i className="me-2 fa-solid fa-house"></i>Home</Link></li>
                             {(isAuthenticated()=== true) ? <></>:    <li><Link to="/"><i className="me-2 fa-solid fa-power-off"></i>Login</Link></li> }

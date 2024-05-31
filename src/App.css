@@ -10,10 +10,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
 .feed-navbar h1
 {
-    color:black;
+    color:rgb(227, 68, 11);
     font-size: 30px;
 }
 .feed-navbar button
@@ -21,7 +22,7 @@
     border:none;
     border-radius: 8px;
     font-size: 30px;
-    color:black;
+    color:rgb(227, 68, 11);
     background-color: transparent;
 }
 .feed-header .offcanvas
@@ -32,17 +33,31 @@
 {
     list-style:none;
     margin: 10px 0px;
+    text-align: center;
 }
 .feed-header li a
 {
     text-decoration: none;
-    color:black;
+    color:rgb(227, 68, 11);
     transition:0.5s;
 }
 .feed-header li a:hover
 {
-    color:gray;
+    color:rgb(144, 38, 0);
     text-decoration: underline;
+}
+.navbar-brand a
+{
+    font-size: 22px;
+    color:rgb(227, 68, 11);
+    text-decoration: none !important;
+    font-weight: bold;
+}
+.text-start
+{
+    position: absolute;
+    top:10%;
+    left:1%
 }
 
 /*Feeds Application Registration & Login*/
@@ -126,6 +141,7 @@
 #feed-post,#feed-post1
 {
     height:200px;
+    width:50%;
 }
 .feed-section 
 {
@@ -133,6 +149,10 @@
     flex-direction: column;
     align-items:center;
     justify-content: center;
+    background-image: url("../public/Completed-pana.svg");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-color: wheat;
 }
 .feed-section .row1
 {
