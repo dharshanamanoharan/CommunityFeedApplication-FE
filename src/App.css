@@ -193,6 +193,11 @@
     align-items:center;
     justify-content: center;
 }
+.updateModal i
+{
+    color:rgb(227, 68, 11);
+    font-size: 20px;
+}
 .feed-edit
 {
     display:flex;

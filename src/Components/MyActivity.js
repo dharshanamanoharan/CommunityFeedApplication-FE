@@ -111,6 +111,26 @@ const MyActivity=()=>{
                 </li>)}
             </ul>
         </div>
+        {/*Update the post modal*/}
+        {/*-- Modal --*/}
+        <div class="modal fade updateModal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Post</h1>
+                    <button data-bs-dismiss="modal" style={{background:"none", border:"none"}} ><i className="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="feed-post1" style={{width:"100%"}} defaultValue={updatePostDesc} onChange={(e)=>setUpdatePostDesc(e.target.value)}></textarea>
+                    <p className="mb-0" style={{color:"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{err2}</p>
+                </div>
+                <div class="modal-footer">
+                    <button onClick={handleUpdate}>Update</button>
+                    <p className="mb-0" style={{color:(updateMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{updateMsg}</p>
+                </div>
+                </div>
+            </div>
+        </div>
     </section>
     )
 }
