@@ -186,17 +186,23 @@
     border:1px solid black;
     margin: 8px;
 }
+.updateModal .modal-header
+{
+    background-color:#f4715a;
+    color:white;
+}
 .updateModal .modal-footer
 {
     display:flex;
     flex-direction: column;
     align-items:center;
     justify-content: center;
+    border-top: none;
 }
 .updateModal i
 {
-    color:rgb(227, 68, 11);
-    font-size: 20px;
+    color:white;
+    font-size: 30px;
 }
 .feed-edit
 {

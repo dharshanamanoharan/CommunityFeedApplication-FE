@@ -36,7 +36,7 @@ const MyActivity=()=>{
             const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
             var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
             setMyPosts(myValidPost);
-            console.log("My Posts",myValidPost);
+            //console.log("My Posts",myValidPost);
         }
         catch(error)
         {
@@ -64,7 +64,7 @@ const MyActivity=()=>{
                     }
                 )
                 setUpdateMsg("Post Updated Successfully and it is awaiting Admin's approval!");
-                console.log(res);
+                //console.log(res);
             }
             catch(error)
             {
@@ -81,7 +81,7 @@ const MyActivity=()=>{
         try
         {
             const res=await axios.delete(`http://localhost:8080/feed/user/deletePost/${user_Id}`,{data:{"postId":a}})
-            console.log(res);
+            //console.log(res);
         }
         catch(error)
         {
@@ -113,18 +113,18 @@ const MyActivity=()=>{
         </div>
         {/*Update the post modal*/}
         {/*-- Modal --*/}
-        <div class="modal fade updateModal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update Post</h1>
+        <div className="modal fade updateModal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h1 className="modal-title fs-5" id="staticBackdropLabel">Update Post</h1>
                     <button data-bs-dismiss="modal" style={{background:"none", border:"none"}} ><i className="fa-solid fa-xmark"></i></button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                     <textarea id="feed-post1" style={{width:"100%"}} defaultValue={updatePostDesc} onChange={(e)=>setUpdatePostDesc(e.target.value)}></textarea>
                     <p className="mb-0" style={{color:"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{err2}</p>
                 </div>
-                <div class="modal-footer">
+                <div className="modal-footer">
                     <button onClick={handleUpdate}>Update</button>
                     <p className="mb-0" style={{color:(updateMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{updateMsg}</p>
                 </div>
