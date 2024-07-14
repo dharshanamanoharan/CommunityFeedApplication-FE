@@ -307,3 +307,7 @@ body
     border: none;
     width: 30px;
 }
+.my-post-list li,.other-post-list li
+{
+    background-color: white;
+}

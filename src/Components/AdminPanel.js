@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import axios from 'axios';
+import Pagination from '@mui/material/Pagination';
 const AdminPanel=()=>{
     //Update
       const [updatePostId,setUpdatePostId]=useState("");
@@ -72,13 +73,21 @@ const AdminPanel=()=>{
                 console.log(error);
             }
         } 
+         //Pagination
+     const [page, setPage] = useState(1);
+     const handleChange = (event, value) => {
+       setPage(value);
+     };
+     const pageCount=Math.ceil(allPosts.length/5);
+     const itemsPerPage=5;
+ 
     return(
         <>
         <section className='container-fluid p-5 view-post-section'>
             <div className='row my-post-list' >
                 <h3>Posts Pending for Approval</h3>
                 <ul className='row'>
-                  {allPosts && allPosts.map((post)=> 
+                  {allPosts && allPosts.slice((page-1)*itemsPerPage,page*itemsPerPage).map((post)=> 
                     <li key={post.postId} className='p-2'>
                         <p>Post:"{post.postDesc}"</p>
                         <p>Date:"{post.postDate}"</p>
@@ -90,6 +99,9 @@ const AdminPanel=()=>{
                         </div>
                     </li>)}
                 </ul>
+            </div>
+            <div className=" container-fluid feed-pagination">
+                <Pagination count={pageCount} page={page} onChange={handleChange} />
             </div>
         </section>
         </>
