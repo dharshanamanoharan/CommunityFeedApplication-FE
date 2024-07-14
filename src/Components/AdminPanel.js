@@ -94,8 +94,8 @@ const AdminPanel=()=>{
                         <p>Creator:"{post.postCreator}"</p>
                         <div className='row row-cols-2 feed-edit'>
                             <button className="col mx-5"
-                            onClick={()=>{updatePost(post.postId,post.postDesc,post.userId,"approved")}}>Approve</button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.userId,post.postId)}}>delete</button>
+                            onClick={()=>{updatePost(post.postId,post.postDesc,post.userId,"approved")}}><i className="fa fa-check"></i></button>
+                            <button className='col mx-5' onClick={()=>{handleDel(post.userId,post.postId)}}><i className="fa fa-xmark"></i></button>
                         </div>
                     </li>)}
                 </ul>

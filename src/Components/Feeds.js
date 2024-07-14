@@ -1,8 +1,7 @@
 import {useState,useEffect} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Feeds=()=>{
-    const navigator=useNavigate();
     //For error handling
     const [err1,setErr1]=useState("");
     const [createMsg,setCreateMsg]=useState("");
@@ -63,17 +62,7 @@ const Feeds=()=>{
             }
         } 
     }
-    //To view my post
-    async function handleViewMyPost()
-    {
-        navigator("/feed/myActivity")
-    }
-    //To view other's posts
-    async function handleViewOtherPost()
-    {
-        navigator("/feed/publicFeed")
-    }
-    
+  
     async function handleUpdate()
     {
         setErr2("");
@@ -134,9 +123,9 @@ const Feeds=()=>{
                 <button className="create-post m-5" onClick={handleCreate}>Create Post</button>
                 <p className="mb-0" style={{color:(createMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{createMsg}</p>
             </div>
-            <div>
-                <button className="view-my-post mx-5" onClick={handleViewMyPost}>view my posts</button>
-                <button className="view-my-post mx-5" onClick={handleViewOtherPost}>View Feed</button>
+            <div className='view-link'>
+                <Link className="view-my-post mx-5" to="/feed/myActivity">view my posts</Link>
+                <Link className="view-my-post mx-5" to="/feed/publicFeed">View Feed</Link>
             </div>
         </section>
     {/*Update the post modal*/}
