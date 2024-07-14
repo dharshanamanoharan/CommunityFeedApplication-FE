@@ -292,7 +292,7 @@ body
     color:#f4715a;
     font-size: 12px;
 }
-.my-post-list p
+.my-post-list p,.other-post-list p
 {
     font-size: 12px;
 }
@@ -328,4 +328,10 @@ body
     justify-content: center;
     row-gap: 16px;
 
+}
+
+.my-post-list ul,.other-post-list ul
+,.my-post-list li,.other-post-list li
+{
+    width: 100%;
 }
