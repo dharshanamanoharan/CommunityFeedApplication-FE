@@ -10,9 +10,7 @@ const Feeds=()=>{
     const [updateMsg,setUpdateMsg]=useState("")
     const [myFlag,setMyFlag]=useState(false);
     const [otherFlag,setOtherFlag]=useState(false);
-    //For viewing posts
-    const [myPosts,setMyPosts]=useState([]);
-    const [allPosts,setAllPosts]=useState([]);
+
     //Post Model
     const user_Id=localStorage.getItem("userId");
     const [userId,setUserId]=useState(user_Id);
@@ -31,49 +29,6 @@ const Feeds=()=>{
     const [updatePostDesc,setUpdatePostDesc]=useState("");
     const [updatePostStatus,setUpdatePostStatus]=useState("pending");
    
-    //Getting all my posts
-    async function getAllMyPosts()
-    {
-        try
-        {
-            const res=await axios.get("http://localhost:8080/feed/user/myPosts/"+user_Id);
-            var myValidPost=res.data.feedList.filter((post)=> post.postStatus !== "deleted");
-            setMyPosts(myValidPost);
-            console.log("My Posts",myValidPost);
-        }
-        catch(error)
-        {
-            console.log(error);
-        }
-    }
-    //Getting all others posts
-    async function getAllOtherPosts()
-    {
-        try
-        {
-            const res=await axios.get("http://localhost:8080/feed/allApprovedPosts");
-            var filteredOtherPosts=[];
-            for(var i=0;i<(res.data.length);i++)
-            {
-                var arr1=res.data[i].feedList;
-                for(var j=0;j<arr1.length;j++)
-                {
-                    if((arr1[j].postStatus === "approved") &&(arr1[j].userId !== user_Id))
-                    {
-                        filteredOtherPosts.push(arr1[j]);
-                    }
-                }
-
-            }
-            setAllPosts(filteredOtherPosts);
-            console.log("filteredOtherPosts",filteredOtherPosts);
-        }
-        catch(error)
-        {
-            console.log(error);
-        }
-    }
-    useEffect(()=>{getAllMyPosts();getAllOtherPosts();},[]);
     //Handling post creation
     async function handleCreate()
     {
@@ -180,42 +135,8 @@ const Feeds=()=>{
                 <p className="mb-0" style={{color:(createMsg.includes("uccess"))?"green":"red",fontSize:"12px",height:"15px",textAlign:"center"}}>{createMsg}</p>
             </div>
             <div>
-                <button className="view-my-post mx-5" onClick={handleViewMyPost}>My Posts</button>
-                <button className="view-my-post mx-5" onClick={handleViewOtherPost}>Other's Posts</button>
-            </div>
-        </section>
-        <section className='container-fluid p-5 view-post-section'>
-            <div className='row my-post-list' style={{display:(myFlag)?"flex":"none"}}>
-                <h3>My Posts</h3>
-                <ul className='row'>
-                  {myPosts && myPosts.map((post)=> 
-                    <li key={post.postId} className='p-2'>
-                        <p>Post:"{post.postDesc}"</p>
-                        <p>Date:"{post.postDate}"</p>
-                        <p>Creator:"{post.postCreator}"</p>
-                        <div className='row row-cols-2 feed-edit'>
-                            {(post.postStatus==="pending")?<>
-                            <button className="col mx-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
-                            onClick={()=>{ setUpdatePostId(post.postId);
-                                            setUpdatePostDesc(post.postDesc);
-                                            setUpdatePostStatus(post.postStatus);
-                                           }}><i className="fa fa-pencil" aria-hidden="true"></i></button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}><i className="fa fa-trash" aria-hidden="true"></i></button>
-                       </>:<></> }
-                        </div>
-                    </li>)}
-                </ul>
-            </div>
-            <div  className='row other-post-list' style={{display:(otherFlag)?"flex":"none"}}>
-                <h3>Other's Post</h3>
-                <ul className='row'>
-                {allPosts && allPosts.map((post)=> 
-                    <li key={post.postId} className='p-2'>
-                        <p>Post:"{post.postDesc}"</p>
-                        <p>Date:"{post.postDate}"</p>
-                        <p>Creator:"{post.postCreator}"</p>
-                    </li>)}
-                </ul>
+                <button className="view-my-post mx-5" onClick={handleViewMyPost}>view my posts</button>
+                <button className="view-my-post mx-5" onClick={handleViewOtherPost}>View Feed</button>
             </div>
         </section>
     {/*Update the post modal*/}
