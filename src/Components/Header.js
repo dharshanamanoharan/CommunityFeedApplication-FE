@@ -15,12 +15,11 @@ const Header=()=>{
     
     return(
         <section className="feed-header">
-            <div className="row feed-navbar sticky-top px-0 mx-0 py-1">
-               <div><button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
-                    <i className="fa-solid fa-bars"></i>
-                </button></div>
-                <div className="col-12 ms-5">
-                    <a className="navbar-brand"><Link to="/"><img src={"../feedBuzzLogo.png"} className="img-fluid" style={{height:"100px",width:"100px"}}/>Feed Buzz</Link></a>
+            <div className="row feed-navbar sticky-top px-0 mx-0">
+               <div>
+                    <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
+                        <i className="fa-solid fa-bars me-3"></i><span style={{color:"#f4715a",fontWeight:"bold"}}>Feed Buzz</span>
+                    </button>
                 </div>
             </div>
             <div className="offcanvas offcanvas-start pt-2 pb-5" tabindex="-1" id="offcanvasExample" >
@@ -29,7 +28,7 @@ const Header=()=>{
                     <ul className="px-0">
                         <>
                             <li><Link to="/feed"><i className="me-2 fa-solid fa-house"></i>Home</Link></li>
-                            {(isAuthenticated()=== true) ? <li><Link to="/"><i class="me-2 fa-solid fa-rss"></i>Public Feed</Link></li>:<></>}
+                            {(isAuthenticated()=== true) ? <li><Link to="/feed/publicFeed"><i class="me-2 fa-solid fa-rss"></i>Public Feed</Link></li>:<></>}
                             {(isAuthenticated()=== true) ? <li><Link to="/feed/myActivity"><i class="me-2 fa-solid fa-chart-line"></i>My Activity</Link></li>:<></>}
                             {(isAuthenticated()=== true) ? <></>:    <li><Link to="/"><i className="me-2 fa-solid fa-power-off"></i>Login</Link></li> }
                             {(isAuthorized()=== true) ? <li><Link to="/adminPanel"><i class="me-2 fa-solid fa-user-tie"></i>Admin Panel</Link></li> : <></>}

@@ -76,7 +76,7 @@ const AdminPanel=()=>{
         <>
         <section className='container-fluid p-5 view-post-section'>
             <div className='row my-post-list' >
-                <h3>Posts pending for Approval</h3>
+                <h3>Posts Pending for Approval</h3>
                 <ul className='row'>
                   {allPosts && allPosts.map((post)=> 
                     <li key={post.postId} className='p-2'>

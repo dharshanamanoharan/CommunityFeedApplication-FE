@@ -1,6 +1,8 @@
 import {useState,useEffect} from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const Feeds=()=>{
+    const navigator=useNavigate();
     //For error handling
     const [err1,setErr1]=useState("");
     const [createMsg,setCreateMsg]=useState("");
@@ -15,7 +17,10 @@ const Feeds=()=>{
     const user_Id=localStorage.getItem("userId");
     const [userId,setUserId]=useState(user_Id);
     let postId;
-    const date1=new Date().toISOString().split('T')[0];
+    const date2=new Date();
+    const date1=date2.getDate()+"-"+(date2.getMonth()+1)+"-"+date2.getFullYear()+", "+
+    date2.getHours()+":"+date2.getMinutes();
+    //const date1=new Date().toISOString().split('T')[0];
     const [postDate,setPostDate]=useState(date1);
     const postAuthor=localStorage.getItem("authenticatedUser");
     const [postCreator,setPostCreator]=useState(postAuthor);
@@ -106,14 +111,12 @@ const Feeds=()=>{
     //To view my post
     async function handleViewMyPost()
     {
-        setMyFlag(true);
-        setOtherFlag(false);
+        navigator("/feed/myActivity")
     }
     //To view other's posts
     async function handleViewOtherPost()
     {
-        setOtherFlag(true);
-        setMyFlag(false);
+        navigator("/feed/publicFeed")
     }
     
     async function handleUpdate()
@@ -196,8 +199,8 @@ const Feeds=()=>{
                             onClick={()=>{ setUpdatePostId(post.postId);
                                             setUpdatePostDesc(post.postDesc);
                                             setUpdatePostStatus(post.postStatus);
-                                           }}>update</button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}>delete</button>
+                                           }}><i className="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button className='col mx-5' onClick={()=>{handleDel(post.postId);}}><i className="fa fa-trash" aria-hidden="true"></i></button>
                        </>:<></> }
                         </div>
                     </li>)}

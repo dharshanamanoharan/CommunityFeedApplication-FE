@@ -4,13 +4,17 @@
     box-sizing: border-box;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+body
+{
+    background-color: wheat;
+}
 .feed-navbar
 {
     display:flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: transparent;
 }
 .feed-navbar h1
 {
@@ -21,8 +25,8 @@
 {
     border:none;
     border-radius: 8px;
-    font-size: 20px;
-    color:#f4715a;
+    font-size: 30px;
+    color:black;
     background-color: transparent;
     position: absolute;
     top:20%;
@@ -68,6 +72,25 @@
     align-items: center;
     justify-content: center;
 }
+.feed-login
+{
+    background: url("../public/Key-pana.png");
+    background-position-x: 15%;
+    background-position-y:30% ;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    height: 100vh;
+    background-color: white;
+}
+.feed-registration
+{
+    background: url("../public/Online\ Review-pana.png");
+    background-position-x:80%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100vh;
+    background-color: white;
+}
  .form-floating
 {
     width:250px;
@@ -101,7 +124,8 @@
 .feed-registration button,
 .feed-login button,
 .feed-section button,
-.view-post-section button
+.view-post-section button,
+.updateModal button
 {
     background-color:#f4715a;
     color:white;
@@ -139,7 +163,11 @@
 #feed-post,#feed-post1
 {
     height:200px;
-    width:50%;
+    width:38%;
+}
+#feed-post
+{
+    height:350px ;
 }
 .feed-section 
 {
@@ -150,8 +178,6 @@
     background-image: url("../public/Completed-pana.svg");
     background-repeat: no-repeat;
     background-position: left;
-    background-color: wheat;
-    height: 90vh;
 }
 .feed-section .row1
 {
@@ -210,24 +236,26 @@
 }
 .my-post-list button
 {
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     display:flex;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
     border: 1px solid rgb(56, 55, 55);
+    font-size: 12px;
 }
 .feed-edit
 {
     position: absolute;
-    right:-18%;
-    top:0.5%;
+    right:1%;
+    bottom:2%;
     display: flex;
     flex-direction: column;
     row-gap: 8px;
     align-items: center;
     justify-content: center;
+    margin: 0px!important;
 }
 .feed-li
 {
@@ -239,11 +267,43 @@
     background-image: url("../public/Processing-pana.svg");
     background-repeat: no-repeat;
     background-position-x: 250%;
-    background-color: wheat;
+    
 }
 .view-post-section h3
 {
     color:rgb(56, 55, 55);
     font-size: 24px;
     text-align: center;
+}
+.view-post-section ul
+{
+    list-style:none;
+}
+.view-post-section li
+{
+    position: relative;
+}
+.my-post-list p i
+{
+    color:gray;
+    font-size: 12px;
+}
+.my-post-list p
+{
+    font-size: 12px;
+}
+.feed-pagination ul
+{
+    list-style: none;
+    display: flex;
+    flex-direction: row!important;
+    align-items: center;
+    justify-content: center;
+}
+.feed-pagination li
+{
+    display: flex;
+    flex-direction: row;
+    border: none;
+    width: 30px;
 }

@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react';
+import Pagination from '@mui/material/Pagination';
 import axios from 'axios';
 const MyActivity=()=>{
       //For error handling
@@ -88,24 +89,32 @@ const MyActivity=()=>{
             console.log(error);
         }
     } 
+     //Pagination
+     const [page, setPage] = useState(1);
+     const handleChange = (event, value) => {
+       setPage(value);
+     };
+     const pageCount=Math.ceil(myPosts.length/5);
+     const itemsPerPage=5;
+ 
     return(
         <section className='container-fluid p-5 view-post-section'>
         <div className='row my-post-list' style={{display:"flex"}}>
             <h3><i className="me-2 fa-solid fa-mug-saucer"></i>My Buzz</h3>
             <ul className='row'>
-              {myPosts && myPosts.map((post)=> 
+              {myPosts && myPosts.slice((page-1)*itemsPerPage,page*itemsPerPage).map((post)=> 
                 <li key={post.postId} className='p-2 feed-li'>
-                    <p>Post:"{post.postDesc}"</p>
-                    <p>Date:"{post.postDate}"</p>
-                    <p>Creator:"{post.postCreator}"</p>
+                    <p> <i className="fa-solid fa-message"></i> Buzz: "{post.postDesc}"</p>
+                    <p> <i className="fa fa-calendar"></i> Created on : {post.postDate}</p>
+                    <p> <i className="fa fa-user"></i> Author : {post.postCreator}</p>
                     <div className='feed-edit'>
                         {(post.postStatus==="pending")?<>
-                        <button className="mx-5 my-update" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+                        <button className=" my-update" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
                         onClick={()=>{ setUpdatePostId(post.postId);
                                         setUpdatePostDesc(post.postDesc);
                                         setUpdatePostStatus(post.postStatus);
                                        }}><i className="fa-solid fa-pen-to-square my-delete"></i></button>
-                        <button className='mx-5 my-delete' onClick={()=>{handleDel(post.postId);}}><i className="fa-solid fa-trash"></i></button>
+                        <button className=' my-delete' onClick={()=>{handleDel(post.postId);}}><i className="fa-solid fa-trash"></i></button>
                    </>:<></> }
                     </div>
                 </li>)}
@@ -131,7 +140,11 @@ const MyActivity=()=>{
                 </div>
             </div>
         </div>
+        <div className=" container-fluid feed-pagination">
+            <Pagination count={pageCount} page={page} onChange={handleChange} />
+      </div>
     </section>
+    
     )
 }
 export default MyActivity;

@@ -32,8 +32,7 @@ const Register=()=>{
         document.getElementById('floatingInput2').value="";
         document.getElementById('floatingInput3').value="";
         document.getElementById('floatingPassword1').value="";
-        document.getElementById('floatingInput4').value="";
-        setEmail("");setUserName("");setPhoneNumber("");setPassword("");setRole("");
+        setEmail("");setUserName("");setPhoneNumber("");setPassword("");
     }
     const handleRegister=async()=>{
         setErr1(""); setErr2("") ;setErr3("") ;setErr4("") ;setErr5("");setRegMsg("");
@@ -47,13 +46,13 @@ const Register=()=>{
             try{
                 const res=await axios.post("http://localhost:8080/feed/register",{userName,email,phoneNumber,password})
                 console.log("Registration success",res.data);
-                setRegMsg("Updated Successfully");
+                setRegMsg("Registered Successfully");
                 regClear();
             }
             catch(error)
             {
                 console.log("Registration Failed",error);
-                setRegMsg("Updated Failed!");
+                setRegMsg("Registration Failed!");
             }
         }
     }
