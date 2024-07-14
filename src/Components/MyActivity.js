@@ -104,9 +104,9 @@ const MyActivity=()=>{
             <ul className='row'>
               {myPosts && myPosts.slice((page-1)*itemsPerPage,page*itemsPerPage).map((post)=> 
                 <li key={post.postId} className='p-2 feed-li'>
-                    <p> <i className="fa-solid fa-message"></i> Buzz: "{post.postDesc}"</p>
-                    <p> <i className="fa fa-calendar"></i> Created on : {post.postDate}</p>
-                    <p> <i className="fa fa-user"></i> Author : {post.postCreator}</p>
+                    <p><i className="fa-solid fa-message"></i> Buzz : "{post.postDesc}"</p>
+                    <p><i className="fa fa-calendar"></i> Created on : {post.postDate}</p>
+                    <p><i className="fa fa-user"></i> Author : {post.postCreator}</p>
                     <div className='feed-edit'>
                         {(post.postStatus==="pending")?<>
                         <button className=" my-update" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 

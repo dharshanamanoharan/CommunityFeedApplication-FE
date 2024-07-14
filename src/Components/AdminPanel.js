@@ -89,13 +89,13 @@ const AdminPanel=()=>{
                 <ul className='row'>
                   {allPosts && allPosts.slice((page-1)*itemsPerPage,page*itemsPerPage).map((post)=> 
                     <li key={post.postId} className='p-2'>
-                        <p>Post:"{post.postDesc}"</p>
-                        <p>Date:"{post.postDate}"</p>
-                        <p>Creator:"{post.postCreator}"</p>
+                         <p> <i className="fa-solid fa-message"></i> Buzz: "{post.postDesc}"</p>
+                         <p> <i className="fa fa-calendar"></i> Created on : {post.postDate}</p>
+                         <p> <i className="fa fa-user"></i> Author : {post.postCreator}</p>
                         <div className='row row-cols-2 feed-edit'>
-                            <button className="col mx-5"
+                            <button className="col"
                             onClick={()=>{updatePost(post.postId,post.postDesc,post.userId,"approved")}}><i className="fa fa-check"></i></button>
-                            <button className='col mx-5' onClick={()=>{handleDel(post.userId,post.postId)}}><i className="fa fa-xmark"></i></button>
+                            <button className='col' onClick={()=>{handleDel(post.userId,post.postId)}}><i className="fa fa-xmark"></i></button>
                         </div>
                     </li>)}
                 </ul>
