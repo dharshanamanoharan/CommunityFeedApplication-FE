@@ -9,7 +9,7 @@ const AdminPanel=()=>{
     //For viewing posts
     const [allPosts,setAllPosts]=useState([]);
      
-      //Getting all others posts
+      //Getting all others posts.
       async function getAllOtherPosts()
       {
           try
